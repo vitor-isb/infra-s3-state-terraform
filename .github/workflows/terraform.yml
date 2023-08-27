@@ -25,13 +25,13 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -out=plan.out
+        run: terraform plan -out=tfplan
       
       - name: Publish Artifact
         uses: actions/upload-artifact@v3
         with:
          name: plan-out
-         path: './plan.out'  
+         path: './tfplan'  
 
   apply:
     runs-on: ubuntu-latest
@@ -51,7 +51,7 @@ jobs:
         run: terraform init          
 
       - name: Terraform Apply
-        run: terraform apply plan.out
+        run: terraform apply tfplan
 
   destroy:
     runs-on: ubuntu-latest
