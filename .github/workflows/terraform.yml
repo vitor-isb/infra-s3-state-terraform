@@ -51,7 +51,7 @@ jobs:
         run: terraform init          
 
       - name: Terraform Apply
-        run: terraform apply plant.out
+        run: terraform apply plan.out
 
   destroy:
     runs-on: ubuntu-latest
